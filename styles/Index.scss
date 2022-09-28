@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@500&family=Poppins:wght@500&display=swap");
+html,
+body {
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+}
+
+.H100 {
+  height: 100vh;
+}
+
+.NavbarButton {
+  cursor: pointer;
+  opacity: 0;
+}
+.NavbarTitle {
+  h1 {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    opacity: 0;
+    z-index: 15 !important;
+    user-select: none;
+  }
+  position: relative;
+  background-color: transparent;
+  z-index: 15 !important;
+}
+
+.MainSection {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.Index-1 {
+  z-index: 1 !important;
+}
+.Screen {
+  font-family: "Montserrat", sans-serif;
+  .ScreenText {
+    font-size: 6rem;
+  }
+}
