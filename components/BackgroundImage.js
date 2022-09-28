@@ -10,7 +10,7 @@ import Sunny from "../public/assets/images/sunny.avif";
 // import Sunny from "../public/assets/images/sunny.avif";
 // import Sunny from "../public/assets/images/sunny.avif";
 // import Sunny from "../public/assets/images/sunny.avif";
-// import classes from "./BackgroundImage.module.scss";
+import classes from "./BackgroundImage.module.scss";
 
 export default function BackgroundImage(props) {
   return (
