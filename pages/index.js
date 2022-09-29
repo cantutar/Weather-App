@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import MainPage from "../components/MainPage";
 
 export default function Home({ data }) {
@@ -15,13 +16,13 @@ export default function Home({ data }) {
       </Head>
 
       <section>
-        <MainPage />
+        <MainPage data={data} />
       </section>
     </div>
   );
 }
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps(context) {
   const dataFetch = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=Istanbul&appid=${process.env.API_KEY}&units=metric`
   );

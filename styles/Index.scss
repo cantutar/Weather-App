@@ -40,6 +40,13 @@ body {
 .Screen {
   font-family: "Montserrat", sans-serif;
   .ScreenText {
-    font-size: 6rem;
+    font-size: 9rem;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    backdrop-filter: blur(5px);
   }
 }

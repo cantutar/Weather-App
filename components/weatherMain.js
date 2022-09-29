@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef } from "react";
-import classes from "./Index.module.scss";
+import classes from "./Card.module.scss";
 import { gsap } from "gsap";
 
 export default function WeatherMain(props) {
