@@ -42,6 +42,15 @@ body {
   .ScreenText {
     font-size: 9rem;
   }
+  @media (max-width: 575.98px) {
+    .ScreenText {
+      font-size: 4rem;
+    }
+    .fs-md-1 {
+      font-size: 1.2rem !important;
+    }
+  }
+
   h2,
   h3,
   h4,
@@ -49,4 +58,8 @@ body {
   h6 {
     backdrop-filter: blur(5px);
   }
+}
+
+.SunSvg {
+  opacity: 0;
 }

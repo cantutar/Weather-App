@@ -6,19 +6,11 @@ export default function Navbar() {
   const NavbarButton = useRef();
 
   useEffect(() => {
-    gsap
-      .timeline()
-      .to(Title.current, {
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-      })
-      .to(NavbarButton.current, {
-        opacity: 1,
-        duration: 1,
-        delay: 0.3,
-        ease: "power3.out",
-      });
+    gsap.timeline().to(Title.current, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+    });
   }, []);
 
   return (

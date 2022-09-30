@@ -4,10 +4,6 @@ import WeatherMain from "../../components/weatherMain";
 import WeatherSummary from "../../components/WeatherSummary";
 
 export default function Search({ data }) {
-  let newDate;
-  const event = new Date(data.dt * 1000);
-  newDate = event.toLocaleString();
-
   return (
     <div>
       <Head>
@@ -17,16 +13,7 @@ export default function Search({ data }) {
       </Head>
 
       <section>
-        <div className="container-fluid pt-3">
-          <div className="row">
-            <MainPage
-              data={data}
-              time={newDate}
-              timeAsSeconds={data.timezone}
-            />
-            <WeatherSummary data={data} />
-          </div>
-        </div>
+        <MainPage data={data} />
       </section>
     </div>
   );
