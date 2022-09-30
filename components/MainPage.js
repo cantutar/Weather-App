@@ -1,23 +1,21 @@
 import BackgroundImage from "./BackgroundImage";
 import Navbar from "./Navbar";
 import classes from "./Card.module.scss";
-import RainyIcon from "../public/assets/icons/cloud-lightning.png";
 import Location from "../public/assets/icons/location.png";
 import Clock from "../public/assets/icons/clock.png";
 import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
 
 export default function MainPage(props) {
-  const { data, time, timeAsSeconds } = props;
+  const { data, time } = props;
   const [currentTime, setCurrentTime] = useState(null);
   useEffect(() => {
     // const current = Date.now();
     setCurrentTime(new Date().toLocaleTimeString());
-    console.log(currentTime);
   }, [currentTime]);
   return (
     <div>
-      <BackgroundImage Weather={data.weather} time={timeAsSeconds} />
+      <BackgroundImage Weather={data.weather} />
       <>
         <div className="row d-flex justify-content-end flex-equal">
           <div className="text-white col-8 bg-danger d-flex flex-column justify-content-between">
@@ -45,11 +43,18 @@ export default function MainPage(props) {
                 {data.weather.map((weather) => (
                   <Fragment key={weather.id}>
                     <p className="fs-1">{weather.main}</p>
+
+                    <div className="ms-5">
+                      <Image
+                        src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                        alt={"icon"}
+                        width={72}
+                        height={72}
+                      />
+                    </div>
                   </Fragment>
                 ))}
-                <div className="ms-5">
-                  <Image src={RainyIcon} alt={"icon"} width={96} height={96} />
-                </div>
+                {/*  */}
               </div>
             </div>
           </div>

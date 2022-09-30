@@ -1,12 +1,7 @@
 import Head from "next/head";
-import { useEffect } from "react";
 import MainPage from "../components/MainPage";
 
 export default function Home({ data }) {
-  let newDate;
-  const event = new Date(data.dt * 1000);
-  newDate = event.toLocaleString();
-
   return (
     <div>
       <Head>

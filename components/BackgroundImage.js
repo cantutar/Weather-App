@@ -1,15 +1,15 @@
 import Image from "next/image";
 // Image Imports
-import Clear from "../public/assets/images/sunny.avif";
+import Clear from "../public/assets/images/clear-sky-day.jpg";
 import Clouds from "../public/assets/images/cloudy.jpg";
+import CloudsNight from "../public/assets/images/cloudy-night.jpg";
 import Night from "../public/assets/images/night.jpg";
 import Rain from "../public/assets/images/rainy-day.jpg";
-import Thunderstorm from "../public/assets/images/rainy-night.jpg";
-import Extreme from "../public/assets/images/snowy-cloudy.jpg";
+import RainNight from "../public/assets/images/rainy-night.jpg";
+import Thunderstorm from "../public/assets/images/thunderstorm.jpg";
 import Snow from "../public/assets/images/snowy-day.jpg";
 import SnowyNight from "../public/assets/images/snowy-night.jpg";
-import SunnyDay from "../public/assets/images/sunny.jpg";
-import Sunset from "../public/assets/images/sunset.jpg";
+import Drizzle from "../public/assets/images/drizzle.jpg";
 
 // css import
 import classes from "./BackgroundImage.module.scss";
@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from "react";
 const BackgroundImageComponent = (props) => {
   return (
     <Image
-      key={props.WeatherKey}
+      // key={props.WeatherKey}
       //   src={Night}
       // src={DayNight}
       src={props.img}
@@ -34,69 +34,42 @@ const BackgroundImageComponent = (props) => {
 
 export default function BackgroundImage(props) {
   const { Weather, time } = props;
-  const [DayNight, setDayNight] = useState(Night);
-  // let condition = `${weather.main}`;
-  // let conditionImage;
-  // switch (condition) {
-  //   case "Rain":
-  //     conditionImage = Rain;
-  //     break;
-  //   case "Cloudy":
-  //     conditionImage = Clouds;
-  //     break;
-  // }
-  console.log(conditionImage);
-  const ImageArray = [{ Clouds: Clouds }];
-  //   const ImageArray = [
-  //     Rain, Clouds, Clear, Snow, Extreme, Thunderstorm];
-  //   TODO : Add weather background image change
+  const [DayNight, setDayNight] = useState("Day");
 
   //   Day night system on background image
-  //   let DayTime;
   const DayTime = useRef();
-  // useEffect(() => {
-  //   //   console.log(time);
-  //   const currentTime = Date.now();
-  //   DayTime.current = new Date(currentTime);
-  //   if (18 > DayTime.current.getHours() && DayTime.current.getHours() > 6) {
-  //     setDayNight(Clear);
-  //   } else {
-  //     setDayNight(Night);
-  //   }
-  // }, [time]);
+  useEffect(() => {
+    const currentTime = Date.now();
+    DayTime.current = new Date(currentTime);
+    if (18 > DayTime.current.getHours() && DayTime.current.getHours() > 6) {
+      setDayNight("Day");
+    } else {
+      setDayNight("Night");
+    }
+  }, [time]);
 
+  const WeatherImages = {
+    Thunderstorm: Thunderstorm,
+    Drizzle: DayNight !== "Night" ? Drizzle : RainNight,
+    Rain: DayNight !== "Night" ? Rain : RainNight,
+    Snow: DayNight !== "Night" ? Snow : SnowyNight,
+    Atmosphere: Rain,
+    Clear: DayNight !== "Night" ? Clear : Night,
+    Clouds: DayNight !== "Night" ? Clouds : CloudsNight,
+  };
   return (
     <>
       <div className={classes.BgImage}>
-        {Weather.map((weather) => {
-          console.log(weather.main);
-          switch (weather.main) {
-            case "Rain":
-              return (
-                <BackgroundImageComponent
-                  WeatherKey={weather.main}
-                  img={Rain}
-                  AltOfImage={weather.main}
-                />
-              );
-            case "Clouds":
+        {Weather.map(
+          ({ main }) =>
+            main && (
               <BackgroundImageComponent
-                WeatherKey={weather.main}
-                img={Rain}
-                AltOfImage={weather.main}
-              />;
-              break;
-            case "Clear":
-              return (
-                <BackgroundImageComponent
-                  WeatherKey={weather.main}
-                  img={Clear}
-                  AltOfImage={weather.main}
-                />
-              );
-          }
-          return BackgroundImageComponent;
-        })}
+                key={main}
+                AltOfImage={main}
+                img={WeatherImages[main]}
+              />
+            )
+        )}
       </div>
     </>
   );
