@@ -13,7 +13,7 @@
 
 ### 🏠 [Homepage](https://stellular-souffle-2c662c.netlify.app/)
 
-## Explanation for project and todos add to project.
+## Explanation for project.
 
 Weather App build with Next.js
 
@@ -41,7 +41,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -58,7 +58,13 @@ You will also see any lint errors in the console.
 - LinkedIn: [@can tutar](https://www.linkedin.com/in/can-tutar-61b6a31b9/)
 
 ##Tech Stack for this project
-
+  <ul>
+      <li>Next.js</li>
+      <li>Gsap</li>
+      <li>OpenWeatherApi</li>
+      <li>Sass</li>
+      <li>Bootstrap 5</li>
+    </ul>
 
 ## Show your support
 
