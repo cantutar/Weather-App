@@ -5,6 +5,7 @@ body {
   overflow: hidden;
   left: 0;
   top: 0;
+  user-select: none;
 }
 
 .H100 {
@@ -23,6 +24,10 @@ body {
     opacity: 0;
     z-index: 15 !important;
     user-select: none;
+    cursor: pointer;
+    &:hover {
+      color: #f5f5f5;
+    }
   }
   position: relative;
   background-color: transparent;
@@ -80,10 +85,15 @@ body {
   text-align: center;
 }
 
+.Homepage {
+  position: fixed;
+}
 .HomeScreenImage {
   z-index: 0 !important;
   width: 100vw;
   height: 100vh;
+  position: relative;
+  display: block;
 }
 .LeadText {
   color: rgb(115, 0, 255);
@@ -91,4 +101,27 @@ body {
 }
 .Blur {
   backdrop-filter: blur(25px) !important;
+}
+
+.PageNotFound {
+  z-index: 1 !important;
+  height: 100vh;
+  width: 100vw;
+  background-color: black !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  h1 {
+    font-size: 6rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: white;
+  }
+  button {
+    font-size: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
 }

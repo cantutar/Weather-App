@@ -1,23 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classes from "./Card.module.scss";
 import SunComponent from "./SunComponent";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 import { BiDownArrow } from "react-icons/bi";
 import { TbTemperatureCelsius } from "react-icons/tb";
+import { gsap } from "gsap";
+import { MotionPathPlugin } from "../node_modules/gsap/MotionPathPlugin";
 
 export default function WeatherSummary(props) {
   const { data } = props;
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
+
+  const Panel = useRef();
+  const Svg = useRef();
+  const Sun = useRef();
+
   useEffect(() => {
     setSunrise(new Date(data.sys.sunrise * 1000).toLocaleTimeString());
     setSunset(new Date(data.sys.sunset * 1000).toLocaleTimeString());
   }, [data.sys.sunrise, data.sys.sunset]);
 
+  gsap.registerPlugin(MotionPathPlugin);
+  useEffect(() => {
+    gsap
+      .timeline()
+      .to(Panel.current, { duration: 1.4, x: "0", ease: "power3.inOut" })
+      .to(Svg.current, {
+        duration: 1,
+        opacity: 1,
+        ease: "power2.inOut",
+        delay: "2",
+      })
+      .to(Sun.current, {
+        duration: 7,
+        motionPath: [
+          { x: 0, y: -20 },
+          { x: 60, y: -80 },
+          { x: 120, y: -100 },
+          { x: 180, y: -80 },
+          { x: 240, y: 0 },
+        ],
+        delay: +1,
+        ease: "power4.inOut",
+      });
+  }, []);
+
   return (
     <>
       <div
+        ref={Panel}
         className={`pe-lg-4 d-flex flex-column justify-content-around ${classes.Panel} row`}
       >
         <div className="card bg-transparent border-0">
@@ -110,7 +143,7 @@ export default function WeatherSummary(props) {
           <h5 className="fs-5 mt-3 text-center">Sunrise & Sunset</h5>
           <hr />
           <div className="text-center">
-            <SunComponent />
+            <SunComponent ref={{ Svg, Sun }} />
             <div className="d-flex justify-content-between">
               <div>
                 <span>Sunrise</span>
@@ -126,7 +159,11 @@ export default function WeatherSummary(props) {
           </div>
         </div>
         {/* I was gonna add this but api level doesnt supports the free tier */}
-        {/* <div className="d-none d-md-block card bg-transparent border-0 text-center">
+      </div>
+    </>
+  );
+}
+/* <div className="d-none d-md-block card bg-transparent border-0 text-center">
           <h5 className="fs-5">7 day forecast</h5>
           <hr />
           <div className="card-body">
@@ -145,8 +182,4 @@ export default function WeatherSummary(props) {
               </div>
             </div>
           </div>
-        </div> */}
-      </div>
-    </>
-  );
-}
+        </div> */

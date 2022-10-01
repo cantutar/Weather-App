@@ -1,35 +1,7 @@
-import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
-import SunIcon from "./SunIcon";
-import { MotionPathPlugin } from "../node_modules/gsap/MotionPathPlugin";
+import { forwardRef, useEffect, useRef } from "react";
 
-export default function SunComponent(props) {
-  const Svg = useRef();
-  const Sun = useRef();
-  const Path = useRef();
-  gsap.registerPlugin(MotionPathPlugin);
-  useEffect(() => {
-    gsap
-      .timeline()
-      .to(Svg.current, {
-        duration: 1,
-        opacity: 1,
-        ease: "power2.inOut",
-      })
-      .to(Sun.current, {
-        duration: 7,
-        motionPath: [
-          { x: 0, y: -20 },
-          { x: 60, y: -80 },
-          { x: 120, y: -100 },
-          { x: 180, y: -80 },
-          { x: 240, y: 0 },
-        ],
-        delay: +1,
-        ease: "power4.inOut",
-      });
-  }, []);
-
+function SunComponent(props, ref) {
+  const { Svg, Sun } = ref;
   return (
     <>
       <>
@@ -77,3 +49,4 @@ export default function SunComponent(props) {
     </>
   );
 }
+export default forwardRef(SunComponent);

@@ -1,13 +1,13 @@
 .TransitionDiv {
   z-index: 1080 !important;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(22, 22, 22);
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgb(22, 22, 22) !important;
   color: white;
-  overflow: hidden;
+  overflow: hidden !important;
   opacity: 1;
 }
 

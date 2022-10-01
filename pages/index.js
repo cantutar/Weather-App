@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import BackgroundImage from "../public/assets/images/bg.jpg";
 import classes from "../components/Card.module.scss";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import Transition from "../components/Transition";
 
 export default function Home() {
@@ -20,20 +20,25 @@ export default function Home() {
   const TransitionText = useRef();
 
   useEffect(() => {
-    gsap
-      .timeline()
-      .to(TransitionText.current, {
-        duration: 1.8,
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        ease: "power2.out",
-        delay: 0.5,
-      })
-      .to(TransitionDiv.current, {
-        duration: 2.5,
-        y: "100%",
-        delay: 2,
-        ease: "power3.out",
-      });
+    const isShown = localStorage.getItem("isShown");
+    // console.log(isShown);
+    if (isShown !== true) {
+      gsap
+        .timeline()
+        .to(TransitionText.current, {
+          duration: 1.8,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          ease: "power2.out",
+          delay: 0.5,
+        })
+        .to(TransitionDiv.current, {
+          duration: 2.5,
+          y: "100%",
+          delay: 2,
+          ease: "power3.out",
+        });
+      localStorage.setItem("isShown", true);
+    }
   }, []);
 
   return (
@@ -44,15 +49,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section>
+      <section className="Homepage">
         <Transition ref={{ TransitionDiv, TransitionText }} />
-        <Navbar />
         <div className="HomeScreenImage">
           <Image
             src={BackgroundImage}
             alt="Home Screen background image"
             layout="fill"
             priority={true}
+            draggable={false}
           />
         </div>
         <main className="container-fluid text-center">
