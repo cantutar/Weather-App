@@ -24,7 +24,7 @@ export default function WeatherMain(props) {
       >
         <h1 className="ScreenText">{data.main.temp.toFixed()} °C</h1>
         <div className="Location d-flex flex-row align-items-center">
-          <h2 className="fs-1">{data.name}</h2>
+          <h2 className="fs-1">{`${data.sys.country},${data.name}`}</h2>
           <div className="ms-md-5">
             <Image
               src={Location}

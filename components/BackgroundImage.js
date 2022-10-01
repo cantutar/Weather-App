@@ -18,15 +18,10 @@ import { useEffect, useRef, useState } from "react";
 const BackgroundImageComponent = (props) => {
   return (
     <Image
-      // key={props.WeatherKey}
-      //   src={Night}
-      // src={DayNight}
       src={props.img}
-      // src={`../public/assets/images/${weather.main}.jpg`}
-      //   alt={`Background Image of ${weather.main}`}
       alt={`Background Image of ${props.AltOfImage}`}
-      // alt={`Background Image of Rain`}
       layout="fill"
+      priority={true}
       draggable={false}
     />
   );

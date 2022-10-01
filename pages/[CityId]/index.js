@@ -1,21 +1,21 @@
 import Head from "next/head";
 import MainPage from "../../components/MainPage";
-import WeatherMain from "../../components/weatherMain";
-import WeatherSummary from "../../components/WeatherSummary";
 
-export default function Search({ data }) {
+export default function Search({ data, fourDayData }) {
   return (
-    <div>
+    <>
       <Head>
         <title>{`${data.name.toString()}-Weather App`}</title>
         <meta name="description" content="Weather app coded by Can Tutar." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section>
-        <MainPage data={data} />
+      <section className="H100">
+        <div className="container-fluid">
+          <MainPage data={data} fourDayData={fourDayData} />
+        </div>
       </section>
-    </div>
+    </>
   );
 }
 
@@ -32,7 +32,20 @@ export async function getServerSideProps(context) {
   );
   const data = await dataFetch.json();
 
-  if (data.cod === "404") {
+  // Tried to implement this but my api level is free tier and doesnt allow me to use this
+
+  // const fourDayDataFetch = await fetch(
+  //   `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${cityname}&appid=${process.env.API_KEY}&units=metric`
+  // );
+
+  // const fourDayData = await fourDayDataFetch.json();
+  // console.log(fourDayData);
+  // if (fourDayData.cod === "404") {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
+  if (data.cod !== 200) {
     return {
       notFound: true,
     };
@@ -40,6 +53,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       data,
+      // fourDayData,
     },
   };
 }

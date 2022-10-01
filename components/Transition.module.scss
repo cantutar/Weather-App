@@ -1,0 +1,23 @@
+.TransitionDiv {
+  z-index: 1080 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(22, 22, 22);
+  color: white;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.Text {
+  font-size: 4.5rem;
+  color: rgb(255, 217, 0);
+  font-family: MontSerrat;
+  text-align: center;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  span {
+    color: rgb(152, 0, 179);
+  }
+}

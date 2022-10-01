@@ -1,9 +1,13 @@
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
+import SunIcon from "./SunIcon";
+import { MotionPathPlugin } from "../node_modules/gsap/MotionPathPlugin";
 
 export default function SunComponent(props) {
   const Svg = useRef();
   const Sun = useRef();
+  const Path = useRef();
+  gsap.registerPlugin(MotionPathPlugin);
   useEffect(() => {
     gsap
       .timeline()
@@ -13,8 +17,14 @@ export default function SunComponent(props) {
         ease: "power2.inOut",
       })
       .to(Sun.current, {
-        duration: 1.5,
-        y: -100,
+        duration: 7,
+        motionPath: [
+          { x: 0, y: -20 },
+          { x: 60, y: -80 },
+          { x: 120, y: -100 },
+          { x: 180, y: -80 },
+          { x: 240, y: 0 },
+        ],
         delay: +1,
         ease: "power4.inOut",
       });
@@ -22,41 +32,48 @@ export default function SunComponent(props) {
 
   return (
     <>
-      <div>
+      <>
         <svg
           width={250}
-          height={250}
-          viewBox={`0 0 ${431} ${314}`}
+          height={122}
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          clipPath="polygon(0 0, 100% 0, 100% 70%, 0 70%)"
+          {...props}
           ref={Svg}
           className="SunSvg"
         >
-          <g id="27a224a5713514926eb784e8b62038fd">
-            <g id="4bed126ea2be696543a1eead2d38c563">
-              <ellipse
-                cx="214.5"
-                cy="242.5"
-                ry="71.5"
-                fill="#FFC62D"
-                ref={Sun}
-              />
-              <line
-                id="9e0e9d99b7fcbb61ffac6db16875ee7a"
-                x1="25.5"
-                y1="239.5"
-                x2="404.521"
-                y2="239.5"
-                stroke="#000"
-                strokeWidth={7}
-                strokeLinecap="round"
-                d="M25.5 239.5h379.021"
-              />
-            </g>
+          <g clipPath="url(#prefix__clip0_30_6)">
+            <path
+              stroke="#000"
+              strokeWidth={7}
+              strokeLinecap="round"
+              d="M3.5 118.5h243"
+            />
+            <ellipse
+              cx={125}
+              cy={140}
+              rx={125}
+              ry={121}
+              stroke="#000"
+              strokeLinejoin="round"
+              strokeDasharray="2 2"
+            />
+            <ellipse
+              cx={8}
+              cy={112.5}
+              rx={12}
+              ry={11.5}
+              fill="#FFC62D"
+              ref={Sun}
+            />
           </g>
+          <defs>
+            <clipPath id="prefix__clip0_30_6">
+              <path fill="#fff" d="M0 0h250v122H0z" />
+            </clipPath>
+          </defs>
         </svg>
-      </div>
+      </>
     </>
   );
 }

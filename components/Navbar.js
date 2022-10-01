@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const Title = useRef();
-  const NavbarButton = useRef();
 
   useEffect(() => {
     gsap.timeline().to(Title.current, {
@@ -15,10 +15,12 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="container mt-5 ms-auto NavbarTitle">
-        <h1 ref={Title} className="fs-5">
-          the.WeatherApp
-        </h1>
+      <div className={`container mt-5 ms-auto NavbarTitle`}>
+        <Link href={"/"}>
+          <h1 ref={Title} className="fs-5">
+            the.WeatherApp
+          </h1>
+        </Link>
       </div>
     </>
   );

@@ -63,3 +63,32 @@ body {
 .SunSvg {
   opacity: 0;
 }
+
+.Center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1 !important;
+  color: rgb(22, 22, 22);
+  input {
+    color: black;
+  }
+  label {
+    color: rgb(14, 13, 13) !important;
+  }
+  text-align: center;
+}
+
+.HomeScreenImage {
+  z-index: 0 !important;
+  width: 100vw;
+  height: 100vh;
+}
+.LeadText {
+  color: rgb(115, 0, 255);
+  font-family: "Poppins", sans-serif;
+}
+.Blur {
+  backdrop-filter: blur(25px) !important;
+}
