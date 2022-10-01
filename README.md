@@ -1,3 +1,25 @@
+<h1 align="center">Welcome 👋 to Weather App ☕</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/cantutar/starbucks-clone-with-improvements" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/cantutar/starbucks-clone-with-improvements/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+</p>
+
+> Weather App 🌩️
+
+### 🏠 [Homepage](https://stellular-souffle-2c662c.netlify.app/)
+
+## Explanation for project and todos add to project.
+
+Weather App build with Next.js
+
+## Docs to use it 💪
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -18,17 +40,31 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### `npm start`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+👤 **Can Tutar**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Website: [cantutar.com](https://cantutar.com)(work in progress)
+- Github: [@cantutar](https://github.com/cantutar)
+- LinkedIn: [@can tutar](https://www.linkedin.com/in/can-tutar-61b6a31b9/)
+
+##Tech Stack for this project
+
+
+## Show your support
+
+Give a ⭐️ if you liked this!
+
+### 📝 License
+
+Copyright © 2022 [Can Tutar](https://github.com/cantutar).<br />
+This project is [MIT](https://github.com/cantutar/IOS-Themed-Javascript-Calculator/blob/master/LICENSE) licensed.
